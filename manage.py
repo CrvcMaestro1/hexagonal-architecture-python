@@ -1,10 +1,11 @@
 import os
 import subprocess
-from typing import Union
-import psycopg2
-from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+from typing import Union, List
+
 import click
+import psycopg2
 from dotenv import load_dotenv
+from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 
 def validate_env(_context: click.Context, _parameter: Union[click.Option, click.Parameter],
@@ -16,12 +17,12 @@ def validate_env(_context: click.Context, _parameter: Union[click.Option, click.
     return env
 
 
-def run_sql(statements):
+def run_sql(statements: List) -> None:
     conn = psycopg2.connect(
-        dbname=os.getenv("POSTGRES_DB"),  # change
+        dbname=os.getenv("POSTGRES_DB"),
         user=os.getenv("DATABASE_USER"),
         password=os.getenv("POSTGRES_PASSWORD"),
-        host=os.getenv("DATABASE_HOST"),  # change
+        host=os.getenv("DATABASE_HOST"),
         port=os.getenv("DATABASE_PORT"),
     )
 
@@ -51,7 +52,7 @@ def db() -> None:
 
 @db.command(help="Create the database")
 @click.argument('env', envvar='ENV', default='dev', callback=validate_env)
-def create(env: str) -> int:
+def create(env: str) -> None:
     click.echo(f'Creating database for `{env}` environment...')
     db_name = f'hex_{env}'
     try:
