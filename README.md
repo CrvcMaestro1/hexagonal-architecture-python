@@ -14,6 +14,13 @@ $ git clone https://https://gitlab.com/crvc1998/hexagonal-architecture-python.gi
 $ cd hexagonal-architecture-python
 ```
 
+## Create .env file
+In the files, there is a .env.example file, copy into .env file and change the values of variables
+```bash
+# Copy the .env.example
+$ cp .env.example .env
+```
+
 ## Running the database
 To use a local database:
 ```bash
