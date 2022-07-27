@@ -1,0 +1,42 @@
+ Hexagonal Architecture example in Python using Flask and SqlAlchemy
+=====================================================================
+
+------------------------
+ Installation and Usage
+------------------------
+
+## Running the database
+To use a local database:
+```bash
+# Run only the first time
+$ mkdir docker/db
+```
+
+## Run docker compose
+```bash
+$ docker-compose up -d
+```
+
+## 
+
+With Python 3.7+ or 3.10, pipenv, and Postgres installed, run the following:
+
+```bash
+$ git clone https://https://gitlab.com/crvc1998/hexagonal-architecture-python.git
+$ cd hexagonal-architecture-python
+$ ./setup.sh
+$ python manage.py db create
+$ python manage.py db migrate
+$ python manage.py server
+```
+To run the tests:
+
+```bash
+$ python manage.py db create test
+$ python manage.py db migrate test
+$ python manage.py check tests
+``` 
+------------------------
+ Thanks to Alex Grover's post
+------------------------
+https://alexgrover.me/posts/python-hexagonal-architecture
