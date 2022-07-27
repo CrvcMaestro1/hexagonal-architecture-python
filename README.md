@@ -23,10 +23,8 @@ $ mkdir docker/db
 
 ### Run docker compose
 ```bash
-$ docker-compose up -d
+$ docker-compose -f docker/docker-compose.yml up -d
 ```
-
-## 
 
 ## To run
 
@@ -35,13 +33,15 @@ $ py -m venv venv
 $ source venv/bin/activate
 $ chmod +x ./setup.sh
 $ ./setup.sh
-$ python manage.py db create
+$ docker-compose -f docker/docker-compose.yml exec web bash
+$ python manage.py db create # already executed in docker-compose file
 $ python manage.py db migrate
 $ python manage.py server
 ```
 To run the tests:
 
 ```bash
+$ docker-compose -f docker/docker-compose.yml exec web bash
 $ python manage.py db create test
 $ python manage.py db migrate test
 $ python manage.py check tests
