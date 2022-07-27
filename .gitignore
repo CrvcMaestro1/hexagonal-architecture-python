@@ -11,7 +11,7 @@ __pycache__/
 .idea/
 
 # Environment variables
-.env*
+*.env
 
 # Mypy cache files
 .mypy_cache/
