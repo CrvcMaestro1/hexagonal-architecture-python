@@ -5,6 +5,15 @@
  Installation and Usage
 ------------------------
 
+## Requirements
+- Install Python 3.7 or 3.10, then
+```bash
+$ pip install virtualenv
+$ sudo apt-get install libpq-dev
+$ git clone https://https://gitlab.com/crvc1998/hexagonal-architecture-python.git
+$ cd hexagonal-architecture-python
+```
+
 ## Running the database
 To use a local database:
 ```bash
@@ -12,18 +21,19 @@ To use a local database:
 $ mkdir docker/db
 ```
 
-## Run docker compose
+### Run docker compose
 ```bash
 $ docker-compose up -d
 ```
 
 ## 
 
-With Python 3.7+ or 3.10, pipenv, and Postgres installed, run the following:
+## To run
 
 ```bash
-$ git clone https://https://gitlab.com/crvc1998/hexagonal-architecture-python.git
-$ cd hexagonal-architecture-python
+$ py -m venv venv
+$ source venv/bin/activate
+$ chmod +x ./setup.sh
 $ ./setup.sh
 $ python manage.py db create
 $ python manage.py db migrate
