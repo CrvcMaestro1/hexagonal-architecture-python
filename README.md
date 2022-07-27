@@ -30,6 +30,7 @@ $ mkdir docker/db
 
 ### Run docker compose
 ```bash
+$ docker network create network
 $ docker-compose -f docker/docker-compose.yml up -d
 ```
 
