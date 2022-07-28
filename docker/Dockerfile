@@ -8,5 +8,3 @@ COPY . /opt/code/
 RUN sed -i 's/\r$//g' /opt/code/setup.sh
 RUN chmod +x /opt/code/setup.sh
 RUN bash -c "/opt/code/setup.sh"
-
-RUN echo "Some line to add to a file" >> /opt/code/.env
