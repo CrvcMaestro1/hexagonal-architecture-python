@@ -19,7 +19,7 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile
-    command: bash -c "python manage.py db create && flask run --host 0.0.0.0"
+    command: bash -c "python manage.py db create && python manage.py db migrate && flask run --host 0.0.0.0"
     volumes:
       - ..:/opt/code
     ports:
