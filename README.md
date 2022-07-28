@@ -30,7 +30,6 @@ $ mkdir docker/db
 
 ### Run docker compose
 ```bash
-$ docker network create network
 $ docker-compose -f docker/docker-compose.yml up -d
 ```
 
@@ -44,7 +43,7 @@ $ ./setup.sh
 $ docker-compose -f docker/docker-compose.yml exec web bash
 $ python manage.py db create # already executed in docker-compose file
 $ python manage.py db migrate
-$ python manage.py server
+$ python manage.py server # run the server (run flask without docker-compose)
 ```
 To run the tests:
 

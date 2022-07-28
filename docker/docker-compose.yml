@@ -14,8 +14,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    networks:
-      network: null
 
   web:
     build:
@@ -29,8 +27,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    networks:
-      network: null
 
   adminer:
     image: adminer
@@ -39,7 +35,3 @@ services:
       - '8080:8080'
     depends_on:
       - db
-
-networks:
-  network:
-    external: true
