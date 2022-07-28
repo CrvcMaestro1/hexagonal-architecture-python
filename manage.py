@@ -8,20 +8,33 @@ from dotenv import load_dotenv
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 
+def check_uri() -> bool:
+    db_uri_check = os.getenv("DATABASE_URI")
+    return db_uri_check is not None
+
+
+def load_env(env: str) -> None:
+    dotenv_file = '.env'
+    if env != 'dev':
+        dotenv_file = f'.env.{env}'
+    load_dotenv(dotenv_file)
+
+
 def validate_env(_context: click.Context, _parameter: Union[click.Option, click.Parameter],
                  env: str) -> str:
     values = ('dev', 'test')
     if env not in values:
         raise click.BadParameter(f'`env` must be one of: {values}')
-
+    if not check_uri():
+        load_env(env)
     return env
 
 
 def run_sql(statements: List) -> None:
     conn = psycopg2.connect(
-        dbname=os.getenv("POSTGRES_DB"),
+        dbname=os.getenv("DATABASE_NAME"),
         user=os.getenv("DATABASE_USER"),
-        password=os.getenv("POSTGRES_PASSWORD"),
+        password=os.getenv("DATABASE_PASSWORD"),
         host=os.getenv("DATABASE_HOST"),
         port=os.getenv("DATABASE_PORT"),
     )
@@ -65,13 +78,7 @@ def create(env: str) -> None:
 @click.argument('env', envvar='ENV', default='dev', callback=validate_env)
 def migrate(env: str) -> int:
     click.echo(f'Running migrations for `{env}` environment...')
-
-    dotenv_file = '.env'
-    if env != 'dev':
-        dotenv_file = f'.env.{env}'
-
-    load_dotenv(dotenv_file)
-
+    load_env(env)
     return subprocess.call(['alembic', 'upgrade', 'head'])
 
 
@@ -99,5 +106,4 @@ def types() -> int:
 
 
 if __name__ == "__main__":
-    load_dotenv('.env')
     cli()
