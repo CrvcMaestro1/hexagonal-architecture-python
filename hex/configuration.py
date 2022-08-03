@@ -18,3 +18,21 @@ def configure_inject(application: Flask) -> None:
         binder.bind(DatabaseInterface, PostgresAdapter(application.config['DATABASE_URI']))
 
     inject.configure(config)
+
+
+def configure_profiler(application: Flask) -> None:
+    application.config["flask_profiler"] = {
+        "enabled": application.config['DEBUG'],
+        "storage": {
+            "engine": "sqlalchemy",
+            "db_url": application.config['DATABASE_URI']
+        },
+        "basicAuth": {
+            "enabled": True,
+            "username": "admin",
+            "password": "admin"
+        },
+        "ignore": [
+            "^/static/.*"
+        ]
+    }

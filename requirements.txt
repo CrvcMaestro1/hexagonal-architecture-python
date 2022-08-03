@@ -34,3 +34,4 @@ tomli==2.0.1
 typing-inspect==0.7.1
 typing_extensions==4.3.0
 Werkzeug==2.2.0
+flask_profiler==1.8.1
