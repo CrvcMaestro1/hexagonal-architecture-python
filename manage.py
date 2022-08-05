@@ -48,7 +48,7 @@ def run_sql(statements: List) -> None:
     conn.close()
 
 
-@click.group('Hex server CLI')
+@click.group('App server CLI')
 def cli() -> None:
     pass
 
