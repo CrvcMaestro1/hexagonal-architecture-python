@@ -5,9 +5,9 @@ from flask.testing import FlaskClient
 from sqlalchemy import literal_column
 from sqlalchemy.engine import Connection
 
-from hex.adapters.database.postgres import posts
-from hex.application import create_application
-from hex.domain.post import Post
+from src.adapters.database.postgres import posts
+from src.application import create_application
+from src.domain.post import Post
 from tests.utils.dates import datetime_to_rfc822_string
 
 

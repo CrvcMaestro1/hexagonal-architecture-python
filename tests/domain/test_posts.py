@@ -5,11 +5,11 @@ from unittest.mock import Mock
 import inject
 import pytest
 
-from hex.domain.actions.create_post import CreatePost
-from hex.domain.actions.get_post import GetPost
-from hex.domain.actions.search_posts import SearchPosts
-from hex.domain.post import Post
-from hex.domain.database_interface import DatabaseInterface
+from src.domain.actions.create_post import CreatePost
+from src.domain.actions.get_post import GetPost
+from src.domain.actions.search_posts import SearchPosts
+from src.domain.post import Post
+from src.domain.database_interface import DatabaseInterface
 from tests.utils.dates import datetime_to_rfc822_string
 
 

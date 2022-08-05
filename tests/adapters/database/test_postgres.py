@@ -2,8 +2,8 @@ import pytest
 from sqlalchemy import literal_column
 from sqlalchemy.engine import Connection
 
-from hex.adapters.database.postgres import posts, PostgresAdapter
-from hex.domain.post import Post
+from src.adapters.database.postgres import posts, PostgresAdapter
+from src.domain.post import Post
 
 
 @pytest.fixture
