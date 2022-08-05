@@ -1,7 +1,7 @@
 import inject
 
-from hex.domain.post import Post
-from hex.domain.database_interface import DatabaseInterface
+from src.domain.post import Post
+from src.domain.database_interface import DatabaseInterface
 
 
 class GetPost:

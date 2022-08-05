@@ -3,8 +3,8 @@ import os
 import inject
 from flask import Flask
 
-from hex.adapters.database.postgres import PostgresAdapter
-from hex.domain.database_interface import DatabaseInterface
+from src.adapters.database.postgres import PostgresAdapter
+from src.domain.database_interface import DatabaseInterface
 
 
 def configure_application(application: Flask) -> None:

@@ -7,27 +7,27 @@ from flask import Flask
 from flask.testing import FlaskClient
 from pytest_mock import MockFixture
 
-from hex.domain.actions.create_post import CreatePost
-from hex.domain.actions.get_post import GetPost
-from hex.domain.actions.search_posts import SearchPosts
-from hex.domain.post import Post
-from hex.web.post_blueprint import create_post_blueprint
+from src.domain.actions.create_post import CreatePost
+from src.domain.actions.get_post import GetPost
+from src.domain.actions.search_posts import SearchPosts
+from src.domain.post import Post
+from src.ports.http.post_blueprint import create_post_blueprint
 from tests.utils.dates import datetime_to_rfc822_string
 
 
 @pytest.fixture
 def get_post(mocker: MockFixture) -> Mock:
-    return mocker.patch('hex.web.post_blueprint.GetPost')
+    return mocker.patch('src.ports.http.post_blueprint.GetPost')
 
 
 @pytest.fixture
 def search_posts(mocker: MockFixture) -> Mock:
-    return mocker.patch('hex.web.post_blueprint.SearchPosts')
+    return mocker.patch('src.ports.http.post_blueprint.SearchPosts')
 
 
 @pytest.fixture
 def create_post(mocker: MockFixture) -> Mock:
-    return mocker.patch('hex.web.post_blueprint.CreatePost')
+    return mocker.patch('src.ports.http.post_blueprint.CreatePost')
 
 
 @pytest.fixture

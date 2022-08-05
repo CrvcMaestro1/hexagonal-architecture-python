@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Optional, List
 
-from hex.domain.post import Post
+from src.domain.post import Post
 
 
 class DatabaseInterface(ABC):
